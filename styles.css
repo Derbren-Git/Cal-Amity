@@ -1,0 +1,615 @@
+/* Background Layer */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('assets/background.jpeg') center/cover no-repeat fixed;
+  background-size: 100% 100%;
+  filter: blur(3px);
+  z-index: -4;
+}
+
+/* Overlay GIFs */
+.overlay1,
+.overlay2,
+.overlay3 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: blur(1px);
+}
+
+.overlay1 {
+  background: url('assets/overlay1.gif') repeat;
+  opacity: 0.55;
+  z-index: -2;
+  background-size: 100% 100%;
+}
+
+.overlay2 {
+  background: url('assets/overlay2.gif') repeat;
+  opacity: 0.95;
+  z-index: 1;
+  background-size: 100% 100%;
+}
+
+.overlay3 {
+  background: url('assets/overlay3.gif') repeat;
+  opacity: 0.1;
+  z-index: -1;
+  background-size: 100% 100%;
+}
+
+/* Start Screen */
+#start-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(50, 0, 0, 1), rgba(0, 0, 0, 0.9));
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 28px;
+  text-align: center;
+  padding: 20px;
+  text-shadow: 0 0 5px #ff6666, 0 0 10px #ff4444, 0 0 15px #ff2222, 0 0 20px #ff0000;
+  letter-spacing: 1px;
+}
+
+/* Words Background */
+.floating-word {
+  position: fixed;
+  font-size: 50px;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 0 5px rgba(255, 102, 102, 0.7), 0 0 10px rgba(255, 68, 68, 0.7),
+    0 0 15px rgba(255, 34, 34, 0.7), 0 0 20px rgba(255, 0, 0, 0.7);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  transition: opacity 3s ease, transform 8s linear;
+  white-space: nowrap;
+  font-family: 'Midnight Terror', sans-serif;
+  z-index: -3;
+}
+
+/* Wrapper for profile pic + music player */
+.profile-and-music {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+  margin-bottom: 20px;
+}
+
+/* Column for stacked photos */
+.photo-column {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  flex-shrink: 0;
+}
+
+/* Compact music player */
+.music-player-container {
+  flex: 1;
+  background: rgba(30, 0, 0, 0.9);
+  border: 2px solid #660000;
+  box-shadow: 0 0 20px #000;
+  padding: 15px;
+  border-radius: 10px;
+  color: #ff6666;
+  font-family: Courier, monospace;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Target the div holding buttons and slider */
+div.music-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Make buttons the same height and centered content */
+div.music-controls button {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.music-controls input[type='range'] {
+  vertical-align: middle;
+}
+
+button {
+  background: rgba(102, 0, 0, 0.7);
+  border: 2px solid #ff4444;
+  color: #ffcccc;
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 4px;
+  text-shadow: 0 0 5px #ff0000, 0 0 10px #ff4444;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background: rgba(255, 0, 0, 0.9);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+button.active {
+  background: #ff4444;
+  color: #fff;
+  text-shadow: 0 0 8px #ff0000, 0 0 15px #ff7777;
+}
+
+/* OOC Info */
+.character-info {
+  margin: 50px 0px;
+  padding: 25px;
+  background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
+  border: 2px solid #660000;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  font-family: 'Courier New', monospace;
+  color: #ddd;
+}
+
+.character-info h2 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #ffcccc;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.character-info .divider {
+  height: 2px;
+  background: repeating-linear-gradient(
+    to right,
+    #660000,
+    #660000 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  margin: 15px 0 25px;
+}
+
+.char-block {
+  margin-bottom: 25px;
+  padding: 20px;
+  background: #141414;
+  border-left: 4px solid #660000;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
+}
+
+.char-block:hover {
+  transform: translateX(5px);
+}
+
+.char-block h3 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #cc9999;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.char-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.char-block li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.char-block li span {
+  color: #ff6666;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.post-info {
+  margin: 25px auto;
+  padding: 25px;
+  padding-right: 10px;
+  background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
+  border: 2px solid #660000;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  font-family: 'Courier New', monospace;
+  color: #ddd;
+}
+
+.post-info h2 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #ffcccc;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* Body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, sans-serif;
+  color: #b30000;
+}
+
+.container {
+  width: 800px;
+  margin: 50px auto;
+  background: rgba(0, 0, 0, 0.9);
+  border: 2px solid #660000;
+  box-shadow: 0 0 25px #000;
+  padding: 25px 30px;
+  border-radius: 10px;
+  position: relative;
+  z-index: 0;
+}
+
+h1 {
+  font-family: Courier, monospace;
+  font-size: 36px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-shadow: 0 0 5px #ff6666, 0 0 10px #ff4444, 0 0 15px #ff2222, 0 0 20px #ff0000;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.quote {
+  font-style: italic;
+  font-size: 15px;
+  color: #bbb;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 20px;
+  color: #ffffff;
+  border-bottom: 1px solid #660000;
+  padding-bottom: 5px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 5px #ff6666, 0 0 10px #ff4444, 0 0 15px #ff2222, 0 0 20px #ff0000;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+.profile-pic {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 3px solid #ff0000;
+  filter: contrast(120%) grayscale(40%);
+  box-shadow: 0 0 10px #000;
+}
+
+.section {
+  clear: both;
+  margin-top: 25px;
+}
+
+/* About Me and Interests Sections */
+.section.about,
+.section.interests {
+  background: rgba(50, 0, 0, 0.8);
+  border: 2px solid #ff4444;
+  border-left: 6px solid #ff8888;
+  border-radius: 10px;
+  padding: 20px 25px;
+  margin-top: 25px;
+  box-shadow: 0 0 15px #000 inset;
+  font-family: 'Courier New', monospace;
+  color: #ffcccc;
+  line-height: 1.6;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.section.about:hover,
+.section.interests:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px #ff4444 inset;
+}
+
+.section.about h2,
+.section.interests h2 {
+  color: #ff6666;
+  text-shadow: 0 0 5px #000;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bolder;
+}
+
+.section.interests strong {
+  color: #ff4444;
+  text-shadow: 0 0 3px #000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bolder;
+}
+
+.section.comments {
+  background: rgba(30, 0, 0, 0.85);
+  border: 2px solid #ff4444;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 25px;
+  box-shadow: 0 0 20px #000 inset;
+  font-family: 'Courier New', monospace;
+  color: #ffcccc;
+}
+
+.section.comments p {
+  background: rgba(0, 0, 0, 0.5);
+  border-left: 4px solid #ff6666;
+  padding: 10px 15px;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #000 inset;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.section.comments p:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px #ff4444 inset;
+  background: rgba(50, 0, 0, 0.7);
+}
+
+.section.comments em {
+  font-style: italic;
+  color: #ff9999;
+}
+
+/* Friends Section */
+.friends {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 14px 16px;
+  align-items: start;
+}
+
+.friend {
+  margin: 0;
+  text-align: center;
+}
+
+.friend img {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #660000;
+  filter: grayscale(100%) contrast(120%);
+  border-radius: 5px;
+  transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 8px #000;
+}
+
+.friend img:hover {
+  transform: scale(1.08);
+  filter: grayscale(30%) contrast(130%);
+  box-shadow: 0 0 12px #ff4444;
+}
+
+.friend figcaption {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.2;
+  color: #ffcccc;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+  font-weight: bolder;
+  text-transform: uppercase;
+  text-shadow: 0 0 4px #000, 0 0 6px #660000;
+}
+
+/* Post Section */
+.post {
+  background: rgba(30, 0, 0, 0.85);
+  border: 1px solid #660000;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  line-height: 1.6;
+  border-radius: 8px;
+  box-shadow: 0 0 12px #000 inset;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+}
+
+.post:hover {
+  transform: translateY(-3px);
+  background: rgba(50, 0, 0, 0.95);
+  box-shadow: 0 0 20px #ff4444 inset;
+}
+
+.post .date {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 8px;
+  font-style: italic;
+  border-bottom: 1px solid #660000;
+}
+
+.post p {
+  margin: 0;
+  color: #f5cccc;
+}
+
+.post .actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.post .actions button {
+  background: rgba(102, 0, 0, 0.7);
+  border: 1px solid #ff4444;
+  color: #ffcccc;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.post .actions button:hover {
+  background: rgba(255, 0, 0, 0.9);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.post .actions span {
+  margin-left: 5px;
+  font-size: 13px;
+  color: #ff8888;
+}
+
+.footer {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #ff6666;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  padding-top: 20px;
+  border-top: 2px solid #660000;
+  text-shadow: 0 0 8px #ff0000, 0 0 15px #ff4444;
+}
+
+.music-player-container h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #ff4444;
+  text-shadow: 0 0 5px #000;
+}
+
+.playlist {
+  max-height: 200px;
+  overflow-y: auto;
+  border-top: 1px solid #660000;
+  border-bottom: 1px solid #660000;
+}
+
+.track {
+  padding: 8px 10px;
+  border-bottom: 1px solid #660000;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.track:hover {
+  background: rgba(102, 0, 0, 0.6);
+  color: #ff9999;
+}
+
+.track.active {
+  background: rgba(255, 0, 0, 0.8);
+  color: #fff;
+  text-shadow: 0 0 5px #000;
+}
+
+/* Custom volume slider */
+#volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 150px;
+  height: 6px;
+  background: #660000;
+  border-radius: 3px;
+  outline: none;
+  margin: 0 6px;
+  vertical-align: middle;
+}
+
+#volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #ff4444;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px #000;
+}
+
+#volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #ff4444;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px #000;
+}
+
+/* Scrollbar styling */
+.playlist::-webkit-scrollbar {
+  width: 8px;
+}
+
+.playlist::-webkit-scrollbar-thumb {
+  background: #660000;
+  border-radius: 4px;
+}
+
+/* Scrollbar for posts */
+.scrollable {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+  box-sizing: content-box;
+}
+
+/* Smooth scrollbar */
+.scrollable::-webkit-scrollbar {
+  width: 8px;
+  right: 5px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background: #660000;
+  border-radius: 4px;
+}
+
+/* Limit cover art size */
+#cover-art {
+  max-height: 100px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 5px;
+  border: 2px solid #660000;
+  box-shadow: 0 0 8px #000;
+}
