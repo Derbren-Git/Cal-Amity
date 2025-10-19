@@ -24,7 +24,17 @@
     <div class="overlay2"></div>
     <div class="overlay3"></div>
 
-    <div id="start-overlay">UNVEIL THE JOYS OF DIONYSUS</div>
+    <!-- CSS-only gate -->
+    <input type="checkbox" id="gate" hidden />
+
+    <div id="start">
+      <video autoplay muted loop playsinline id="start-fire">
+        <source src="assets/Fire.mp4" type="video/mp4" />
+      </video>
+
+      <!-- Full screen clickable layer -->
+      <label for="gate" id="start-overlay">PRESS ANYWHERE TO ENTER</label>
+    </div>
 
     <div class="container">
       <h1>Cal-Amity</h1>
